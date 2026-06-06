@@ -25,7 +25,7 @@ window.SITE_CONTENT = {
         tag: 'Neo Soul',
         title: '黄宣',
         summary: '融合 Neo Soul、Funk、Jazz 与电子音乐，舞台表现强，作品里有鲜明的色彩感、幽默感和实验性。',
-        bullets: ['风格：Neo Soul、Funk、Jazz Fusion、Electronic', '代表作：《独上 C 楼》《一天》《Beanstalk》《Paradigm》', 'tags：舞台能量、编曲色彩、复古与现代的混合']
+        bullets: ['风格：Neo Soul、Funk、Jazz Fusion、Electronic', '代表作：《独上 C 楼》《不开灯的俱乐部》《羊皮先生》', 'tags：舞台能量、编曲色彩、复古与现代的混合']
       },
       {
         id: 'dean-ting',
