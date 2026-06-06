@@ -84,11 +84,11 @@ async function copyTemplate(id) {
 function initTemplates() {
   if (!parsedSections.length) {
     templateCount.textContent = '读取失败';
-    templateSource.textContent = '静态模板数据没有加载，请确认 acm-data.js 已随页面一起上传。';
+    templateSource.textContent = '静态模板数据没有加载，请确认 assets/data/acm-data.js 已随页面一起上传。';
     templateList.innerHTML = `
       <div class="glass-card loading-card">
         <h3>模板数据读取失败</h3>
-        <p>请确认 acm-data.js、acm.js 和 acm.html 在同一目录。</p>
+        <p>请确认 assets/data/acm-data.js、assets/js/acm.js 和 acm.html 路径正确。</p>
       </div>
     `;
     return;

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="失败尽常态个人资料馆的静态编辑端口，支持本地保存、导入和导出 JSON。" />
+  <title>编辑端口 | 失败尽常态</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css?v=20260606-4" />
+</head>
+<body class="editor-page">
+  <div class="site-bg"></div>
+  <header class="header">
+    <a class="logo" href="index.html" aria-label="回到首页"><span class="logo-mark">FS</span><span>FailStateNormal</span></a>
+    <button class="nav-toggle" type="button" aria-label="打开导航" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav" aria-label="主导航">
+      <a href="index.html">首页</a><a href="acm.html">算法</a><a href="music.html">音乐</a><a href="history.html">历史</a><a href="physics.html">物理</a><a href="books-films.html">书影音</a><a href="editor.html">编辑</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="page-hero section reveal">
+      <p class="eyebrow">Static Editor</p>
+      <h1>编辑端口</h1>
+      <p class="hero-text">这是静态网站可用的浏览器编辑器：可以修改音乐、历史、物理、书影音页面内容，保存到当前浏览器，也可以导入 / 导出 JSON。</p>
+      <div class="hero-actions"><a class="button primary" data-preview-link href="music.html">查看当前栏目</a><a class="button ghost" href="index.html">返回主页</a></div>
+    </section>
+
+    <section class="section reveal">
+      <div class="notice-card">
+        <h3>重要说明</h3>
+        <p>GitHub Pages 是静态网站，浏览器不能直接把修改写回仓库。这里的“保存”会存在你当前浏览器的 localStorage；要永久更新网站，请导出 JSON，再把内容同步到 <code>assets/data/site-content.js</code> 后提交。</p>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <div class="editor-layout">
+        <aside class="editor-panel">
+          <form class="editor-form" data-editor-form>
+            <label>选择栏目
+              <select data-page-select>
+                <option value="music">音乐</option>
+                <option value="history">历史</option>
+                <option value="physics">物理</option>
+                <option value="books-films">书影音</option>
+              </select>
+            </label>
+            <label>栏目标题
+              <input data-page-title type="text" />
+            </label>
+            <label>栏目英文/眉标
+              <input data-page-eyebrow type="text" />
+            </label>
+            <label>栏目简介
+              <textarea data-page-intro></textarea>
+            </label>
+            <div class="editor-actions">
+              <button class="primary" type="button" data-save-page>保存栏目信息</button>
+              <button type="button" data-add-item>新增条目</button>
+            </div>
+          </form>
+        </aside>
+
+        <div class="editor-panel">
+          <div class="section-heading">
+            <p class="eyebrow">Items</p>
+            <h2>条目列表</h2>
+            <p>点击“编辑”会把条目内容放到下方表单。书影音目前也可以编辑全部条目，新增条目默认加到第一个分组。</p>
+          </div>
+          <div class="editor-list" data-item-list></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <div class="editor-layout">
+        <div class="editor-panel">
+          <form class="editor-form" data-item-form>
+            <input data-item-index type="hidden" />
+            <input data-item-group type="hidden" />
+            <label>标签 / 作者 / 类型
+              <input data-item-tag type="text" />
+            </label>
+            <label>标题
+              <input data-item-title type="text" />
+            </label>
+            <label>简介
+              <textarea data-item-summary></textarea>
+            </label>
+            <label>要点（一行一条）
+              <textarea data-item-bullets></textarea>
+            </label>
+            <div class="editor-actions">
+              <button class="primary" type="button" data-save-item>保存条目</button>
+              <button type="button" data-clear-item>清空表单</button>
+              <button type="button" data-delete-item>删除条目</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="editor-panel">
+          <div class="section-heading">
+            <p class="eyebrow">Import / Export</p>
+            <h2>导入导出</h2>
+            <p>导出的是完整内容 JSON，可以复制保存；导入会覆盖当前浏览器保存的版本。</p>
+          </div>
+          <div class="editor-form">
+            <label>JSON 内容
+              <textarea class="editor-output" data-json-output></textarea>
+            </label>
+            <div class="editor-actions">
+              <button class="primary" type="button" data-save-all>保存到浏览器</button>
+              <button type="button" data-export-json>导出到文本框</button>
+              <button type="button" data-import-json>从文本框导入</button>
+              <button type="button" data-reset-json>恢复默认</button>
+            </div>
+            <small data-editor-status></small>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer"><p>© <span id="year"></span> 失败尽常态 · Editor</p></footer>
+  <script src="assets/js/script.js?v=20260606-4"></script>
+  <script src="assets/data/site-content.js?v=20260606-4"></script>
+  <script src="assets/js/editor.js?v=20260606-4"></script>
+</body>
+</html>
