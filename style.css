@@ -518,6 +518,11 @@ pre {
   }
 }
 
+.template-page .reveal {
+  opacity: 1;
+  transform: none;
+}
+
 /* Content archive sections */
 .feature-grid,
 .analysis-grid,
