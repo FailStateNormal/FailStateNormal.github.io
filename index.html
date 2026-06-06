@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="失败尽常态 / FailStateNormal 的个人网站，记录代码、兴趣与学习。" />
+  <meta name="description" content="失败尽常态 / FailStateNormal 的个人主页：算法竞赛模板、音乐、历史人物、物理学家、书影音和代码记录。" />
   <title>失败尽常态 | FailStateNormal</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,9 +27,11 @@
 
     <nav class="nav" aria-label="主导航">
       <a href="#about">关于</a>
-      <a href="#projects">项目</a>
-      <a href="#interests">兴趣</a>
-      <a href="#notes">记录</a>
+      <a href="#algorithms">算法</a>
+      <a href="#music">音乐</a>
+      <a href="#history">历史</a>
+      <a href="#science">物理</a>
+      <a href="#books-films">书影音</a>
       <a href="#contact">联系</a>
     </nav>
   </header>
@@ -37,15 +39,15 @@
   <main id="top">
     <section class="hero section">
       <div class="hero-content reveal">
-        <p class="eyebrow">Personal Website · Code · Interest · Notes</p>
+        <p class="eyebrow">Personal Archive · ACM · Music · History · Science</p>
         <h1>失败尽常态</h1>
         <p class="subtitle">FailStateNormal</p>
         <p class="hero-text">
-          失败不是终点，而是常态。这里用来记录我的代码、学习、兴趣和一些正在慢慢成型的想法。
+          失败不是终点，而是常态。这个网站会慢慢收纳我的算法竞赛模板、代码项目、音乐偏好、历史人物札记、物理学家笔记，以及书影音记录。
         </p>
         <div class="hero-actions">
-          <a class="button primary" href="https://github.com/FailStateNormal" target="_blank" rel="noreferrer">访问 GitHub</a>
-          <a class="button ghost" href="#projects">查看项目</a>
+          <a class="button primary" href="acm.html">查看 ACM 模板库</a>
+          <a class="button ghost" href="https://github.com/FailStateNormal" target="_blank" rel="noreferrer">访问 GitHub</a>
         </div>
       </div>
 
@@ -53,46 +55,179 @@
         <div class="terminal-top">
           <span></span><span></span><span></span>
         </div>
-        <pre><code>const profile = {
-  name: "失败尽常态",
+        <pre><code>const archive = {
+  owner: "失败尽常态",
   handle: "FailStateNormal",
-  status: "learning",
-  motto: "Failure is the norm.",
-  github: "github.com/FailStateNormal"
+  algorithm: "ACM/ICPC templates",
+  interests: ["music", "history", "physics", "books", "films"],
+  motto: "Failure is the norm."
 }</code></pre>
       </aside>
     </section>
 
     <section id="about" class="section reveal">
       <div class="section-heading">
-        <p class="eyebrow">About Me</p>
-        <h2>关于我</h2>
+        <p class="eyebrow">About This Site</p>
+        <h2>这个主页准备放什么</h2>
       </div>
       <div class="about-grid">
         <div class="glass-card big-card">
-          <h3>你好，我是失败尽常态。</h3>
+          <h3>一个慢慢扩展的个人资料馆。</h3>
           <p>
-            这是我的个人网站初版。它会随着我的学习、项目和兴趣一起成长。
-            我希望它不只是一个展示页，也能成为一个持续记录自己的地方。
+            这里不只放代码，也放兴趣。现在先搭好结构：算法竞赛模板、喜欢的音乐人、历史人物、物理学家、书籍与影视。之后你可以继续补充自己的评价、截图、链接、文章和项目。
           </p>
           <p>
-            现在这里可以先放一些基础信息，之后你可以继续补充：正在学习的技术、喜欢的领域、个人经历、作品展示等。
+            当前版本已经把你放进文件夹的 ACM 模板整理成独立页面，其他栏目先做成可继续修改的初稿卡片。
           </p>
         </div>
         <div class="stats">
-          <div class="stat-card"><strong>01</strong><span>代码项目</span></div>
-          <div class="stat-card"><strong>02</strong><span>学习记录</span></div>
-          <div class="stat-card"><strong>03</strong><span>兴趣收藏</span></div>
-          <div class="stat-card"><strong>∞</strong><span>持续更新</span></div>
+          <div class="stat-card"><strong>ACM</strong><span>算法竞赛模板</span></div>
+          <div class="stat-card"><strong>R&B</strong><span>音乐人记录</span></div>
+          <div class="stat-card"><strong>史</strong><span>人物与时代</span></div>
+          <div class="stat-card"><strong>∞</strong><span>持续完善</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="algorithms" class="section reveal">
+      <div class="section-heading">
+        <p class="eyebrow">Algorithm Templates</p>
+        <h2>ACM / ICPC 算法竞赛模板</h2>
+        <p>已读取你放进文件夹的模板文本，并做成独立的可检索页面。</p>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card wide-card">
+          <div class="card-tag">C++</div>
+          <h3>ACM 竞赛模板汇总</h3>
+          <p>
+            覆盖基础算法、数据结构、图论、数学、计算几何、字符串高级算法和常用代码片段。独立页面支持目录、搜索和代码块排版。
+          </p>
+          <div class="mini-tags">
+            <span>快速排序</span><span>并查集</span><span>线段树</span><span>Dijkstra</span><span>Dinic</span><span>凸包</span>
+          </div>
+          <a class="text-link" href="acm.html">打开模板库 →</a>
+        </article>
+        <article class="feature-card">
+          <div class="card-tag">Plan</div>
+          <h3>后续可加</h3>
+          <p>树链剖分、LCA、后缀自动机、CDQ 分治、可持久化数据结构等高级专题可以单独拆页。</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="music" class="section reveal">
+      <div class="section-heading">
+        <p class="eyebrow">Musicians</p>
+        <h2>喜欢的音乐人</h2>
+        <p>先做一个简介版本，后续你可以补充个人最喜欢的专辑、歌词、现场和主观评价。</p>
+      </div>
+      <div class="card-grid">
+        <article class="project-card profile-card">
+          <div class="card-tag">Soul / R&B</div>
+          <h3>方大同</h3>
+          <p>以华语 Soul、R&B、Funk 质感见长，编曲克制但律动鲜明，常把温柔旋律和黑人音乐根源结合。</p>
+          <p class="works">代表作：《特别的人》《爱爱爱》《春风吹》《三人游》</p>
+        </article>
+        <article class="project-card profile-card">
+          <div class="card-tag">R&B / Pop</div>
+          <h3>陶喆</h3>
+          <p>华语 R&B 代表人物之一，擅长把蓝调、摇滚、福音和流行旋律融合，作品兼具律动与叙事。</p>
+          <p class="works">代表作：《爱，很简单》《普通朋友》《黑色柳丁》《沙滩》</p>
+        </article>
+        <article class="project-card profile-card">
+          <div class="card-tag">Neo Soul</div>
+          <h3>黄宣</h3>
+          <p>风格融合 Neo Soul、Funk、Jazz 与电子元素，舞台表现强，音乐里有很强的色彩感和实验感。</p>
+          <p class="works">代表作：《独上 C 楼》《一天》《Beanstalk》</p>
+        </article>
+        <article class="project-card profile-card">
+          <div class="card-tag">Singer-songwriter</div>
+          <h3>丁世光</h3>
+          <p>旋律审美细腻，作品常带有 R&B、Soul 与流行抒情气质，适合放在夜晚慢慢听。</p>
+          <p class="works">代表作：《神经志》《Simon》《瘦子》</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="history" class="section reveal">
+      <div class="section-heading">
+        <p class="eyebrow">History Figures</p>
+        <h2>历史人物札记</h2>
+      </div>
+      <div class="analysis-grid">
+        <article class="analysis-card">
+          <h3>诸葛亮</h3>
+          <p>可以从“政治家、军事组织者、制度建设者、理想主义者”几个角度写。他的魅力不仅在谋略，也在于蜀汉弱势局面下的长期治理与北伐坚持。</p>
+          <ul><li>关键词：隆中对、治蜀、北伐、鞠躬尽瘁</li><li>可写角度：理想与现实、战略与国力、忠诚形象的形成</li></ul>
+        </article>
+        <article class="analysis-card">
+          <h3>李世民</h3>
+          <p>唐太宗是帝王政治能力的典型样本：军事才能、用人能力、纳谏机制与国家治理共同构成“贞观之治”的基础。</p>
+          <ul><li>关键词：玄武门之变、贞观之治、魏徵、开明政治</li><li>可写角度：权力来源、君臣关系、盛世治理</li></ul>
+        </article>
+        <article class="analysis-card">
+          <h3>孔子</h3>
+          <p>孔子的影响不只在伦理说教，而在于重建秩序的思想努力：仁、礼、君子、教育平等化，构成后世儒家传统的核心。</p>
+          <ul><li>关键词：仁、礼、君子、有教无类、论语</li><li>可写角度：个人修养、社会秩序、教育观</li></ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="science" class="section reveal">
+      <div class="section-heading">
+        <p class="eyebrow">Physics</p>
+        <h2>伟大的物理学家</h2>
+      </div>
+      <div class="analysis-grid">
+        <article class="analysis-card">
+          <h3>牛顿</h3>
+          <p>建立经典力学体系，提出运动定律与万有引力定律，并在微积分、光学等领域产生深远影响。</p>
+          <p class="works">关键词：经典力学、万有引力、微积分、自然哲学的数学原理</p>
+        </article>
+        <article class="analysis-card">
+          <h3>爱因斯坦</h3>
+          <p>以相对论重塑人类对时间、空间、引力的理解，也通过光电效应推动量子理论发展。</p>
+          <p class="works">关键词：狭义相对论、广义相对论、光电效应、质能方程</p>
+        </article>
+        <article class="analysis-card">
+          <h3>麦克斯韦</h3>
+          <p>统一电与磁，预言电磁波存在。他的方程组是现代物理和电气通信技术的重要基础。</p>
+          <p class="works">关键词：麦克斯韦方程组、电磁场、电磁波、统计物理</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="books-films" class="section reveal">
+      <div class="section-heading">
+        <p class="eyebrow">Books & Films</p>
+        <h2>书籍与影视记录</h2>
+      </div>
+      <div class="split-grid">
+        <div>
+          <h3 class="subsection-title">书</h3>
+          <div class="compact-list">
+            <article><strong>《心》</strong><span>夏目漱石。孤独、伦理负担与近代自我意识的小说。</span></article>
+            <article><strong>《雪国》</strong><span>川端康成。以冷寂、空灵的笔触写美、距离与虚无感。</span></article>
+            <article><strong>《麦田里的守望者》</strong><span>J. D. 塞林格。青春期的疏离、反叛与保护纯真的愿望。</span></article>
+            <article><strong>《白夜行》</strong><span>东野圭吾。命运、罪与共生关系交织的长篇推理小说。</span></article>
+          </div>
+        </div>
+        <div>
+          <h3 class="subsection-title">影视</h3>
+          <div class="compact-list">
+            <article><strong>1994《三国演义》</strong><span>群像、权谋、英雄理想与历史兴亡的古典叙事。</span></article>
+            <article><strong>《大明王朝1566》</strong><span>制度、财政、官僚政治与人性的高密度表达。</span></article>
+            <article><strong>《雍正王朝》</strong><span>改革、权力、孤独与帝王责任的历史剧。</span></article>
+            <article><strong>《海边的曼彻斯特》</strong><span>创伤、失去与无法轻易和解的人生困境。</span></article>
+          </div>
         </div>
       </div>
     </section>
 
     <section id="projects" class="section reveal">
       <div class="section-heading">
-        <p class="eyebrow">Projects</p>
+        <p class="eyebrow">Code Projects</p>
         <h2>个人代码 / 项目</h2>
-        <p>先放占位项目，之后可以替换成你的真实仓库。</p>
       </div>
       <div class="card-grid">
         <article class="project-card">
@@ -102,54 +237,17 @@
           <a href="https://github.com/FailStateNormal/FailStateNormal.github.io" target="_blank" rel="noreferrer">查看仓库 →</a>
         </article>
         <article class="project-card">
-          <div class="card-tag">Code</div>
-          <h3>工具脚本合集</h3>
-          <p>可以放一些自己写的小工具、自动化脚本、学习代码或命令行项目。</p>
-          <a href="https://github.com/FailStateNormal" target="_blank" rel="noreferrer">前往 GitHub →</a>
+          <div class="card-tag">ACM</div>
+          <h3>算法模板库</h3>
+          <p>把常用竞赛模板整理为在线页面，方便复习、检索和持续扩充。</p>
+          <a href="acm.html">进入页面 →</a>
         </article>
         <article class="project-card">
-          <div class="card-tag">Learning</div>
-          <h3>学习练习</h3>
-          <p>记录编程、算法、前端、后端或其它技术的学习过程。</p>
-          <a href="#notes">查看记录 →</a>
+          <div class="card-tag">Future</div>
+          <h3>后续项目</h3>
+          <p>这里可以继续加入脚本工具、前端练习、学习笔记或其它代码仓库。</p>
+          <a href="https://github.com/FailStateNormal" target="_blank" rel="noreferrer">前往 GitHub →</a>
         </article>
-      </div>
-    </section>
-
-    <section id="interests" class="section reveal">
-      <div class="section-heading">
-        <p class="eyebrow">Interests</p>
-        <h2>兴趣空间</h2>
-      </div>
-      <div class="interest-list">
-        <div class="interest-item"><span>🎮</span><div><h3>游戏</h3><p>记录喜欢的游戏、通关体验、截图和想法。</p></div></div>
-        <div class="interest-item"><span>🎧</span><div><h3>音乐</h3><p>收藏喜欢的歌、歌单或某段时间循环播放的声音。</p></div></div>
-        <div class="interest-item"><span>📚</span><div><h3>阅读 / 影视</h3><p>放一些读书笔记、电影感想、番剧记录。</p></div></div>
-        <div class="interest-item"><span>🧪</span><div><h3>折腾</h3><p>各种有趣的小实验、小工具、小想法都可以放在这里。</p></div></div>
-      </div>
-    </section>
-
-    <section id="notes" class="section reveal">
-      <div class="section-heading">
-        <p class="eyebrow">Notes</p>
-        <h2>学习与记录</h2>
-      </div>
-      <div class="timeline">
-        <div class="timeline-item">
-          <time>现在</time>
-          <h3>搭建个人网站</h3>
-          <p>先完成一个能上线的版本，再慢慢增加内容和样式。</p>
-        </div>
-        <div class="timeline-item">
-          <time>下一步</time>
-          <h3>补充真实项目</h3>
-          <p>把 GitHub 上的仓库、项目截图、在线演示链接放进项目区。</p>
-        </div>
-        <div class="timeline-item">
-          <time>以后</time>
-          <h3>写博客 / 笔记</h3>
-          <p>可以加入 Markdown 博客、学习日志或技术文章。</p>
-        </div>
       </div>
     </section>
 
@@ -157,10 +255,11 @@
       <div class="glass-card contact-card">
         <p class="eyebrow">Contact</p>
         <h2>找到我</h2>
-        <p>目前先放 GitHub。之后你可以继续加邮箱、B站、知乎、博客、Steam 等链接。</p>
+        <p>目前先放 GitHub 和本站链接。之后可以继续加邮箱、B站、知乎、博客、Steam 等。</p>
         <div class="link-row">
           <a href="https://github.com/FailStateNormal" target="_blank" rel="noreferrer">GitHub</a>
           <a href="https://FailStateNormal.github.io" target="_blank" rel="noreferrer">Website</a>
+          <a href="acm.html">ACM Templates</a>
         </div>
       </div>
     </section>

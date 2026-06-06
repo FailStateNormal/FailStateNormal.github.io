@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="失败尽常态整理的 ACM/ICPC 算法竞赛 C++ 模板库。" />
+  <title>ACM 模板库 | 失败尽常态</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="template-page">
+  <div class="site-bg"></div>
+
+  <header class="header">
+    <a class="logo" href="index.html" aria-label="回到首页">
+      <span class="logo-mark">FS</span>
+      <span>FailStateNormal</span>
+    </a>
+
+    <button class="nav-toggle" type="button" aria-label="打开导航" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="nav" aria-label="主导航">
+      <a href="index.html">首页</a>
+      <a href="#overview">概览</a>
+      <a href="#catalog">目录</a>
+      <a href="#templates">模板</a>
+      <a href="ACM竞赛模板汇总.txt" target="_blank" rel="noreferrer">原始 TXT</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="template-hero section reveal">
+      <div>
+        <p class="eyebrow">ACM / ICPC · C++ Templates</p>
+        <h1>算法竞赛模板库</h1>
+        <p class="hero-text">
+          由本地的 <code>ACM竞赛模板汇总.txt</code> 自动读取并排版。支持目录跳转、关键词搜索、章节统计和代码块展示，方便之后继续扩充。
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#templates">开始查看</a>
+          <a class="button ghost" href="index.html#algorithms">返回主页</a>
+        </div>
+      </div>
+      <aside class="template-summary glass-card">
+        <p class="eyebrow">Status</p>
+        <h2 id="template-count">读取中...</h2>
+        <p id="template-source">正在加载模板文本</p>
+      </aside>
+    </section>
+
+    <section id="overview" class="section reveal">
+      <div class="section-heading">
+        <p class="eyebrow">Overview</p>
+        <h2>覆盖内容</h2>
+      </div>
+      <div class="overview-grid">
+        <article><strong>基础算法</strong><span>排序、二分、高精度、前缀和、双指针、离散化</span></article>
+        <article><strong>数据结构</strong><span>并查集、堆、树状数组、线段树、Trie、KMP、哈希</span></article>
+        <article><strong>搜索与图论</strong><span>拓扑排序、最短路、最小生成树、二分图、Tarjan、网络流</span></article>
+        <article><strong>数学</strong><span>GCD、筛法、快速幂、扩欧、CRT、组合数、高斯消元、博弈论</span></article>
+        <article><strong>计算几何</strong><span>点线关系、多边形面积、凸包、Pick 定理、旋转卡壳</span></article>
+        <article><strong>高级字符串与片段</strong><span>AC 自动机、后缀数组提示、快读、常用头文件、DP 模型</span></article>
+      </div>
+    </section>
+
+    <section id="catalog" class="section reveal">
+      <div class="section-heading">
+        <p class="eyebrow">Catalog</p>
+        <h2>目录与搜索</h2>
+        <p>输入关键词可以筛选模板标题和代码内容，例如：Dijkstra、线段树、凸包、快速幂。</p>
+      </div>
+      <div class="search-panel glass-card">
+        <label for="template-search">搜索模板</label>
+        <input id="template-search" type="search" placeholder="输入算法名、章节名或代码关键词..." autocomplete="off" />
+      </div>
+      <div id="catalog-list" class="catalog-list"></div>
+    </section>
+
+    <section id="templates" class="section reveal">
+      <div class="section-heading">
+        <p class="eyebrow">Templates</p>
+        <h2>模板正文</h2>
+      </div>
+      <div id="template-list" class="template-list">
+        <div class="glass-card loading-card">正在读取 ACM 模板文本...</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© <span id="year"></span> 失败尽常态 · ACM Templates</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="acm.js"></script>
+</body>
+</html>
