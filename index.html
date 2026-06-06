@@ -31,7 +31,6 @@
       <a href="history.html">历史</a>
       <a href="physics.html">物理</a>
       <a href="books-films.html">书影音</a>
-      <a href="editor.html">编辑</a>
     </nav>
   </header>
 
@@ -46,7 +45,6 @@
         </p>
         <div class="hero-actions">
           <a class="button primary" href="#archive">进入资料馆</a>
-          <a class="button ghost" href="editor.html">打开编辑端口</a>
         </div>
       </div>
 
@@ -73,13 +71,13 @@
             首页不再把所有内容堆在一起，而是作为总入口。算法、音乐、历史、物理、书影音都拆成独立页面，之后补充内容时更清楚，也更适合继续扩展。
           </p>
           <p>
-            右上角和下面的“编辑端口”可以在浏览器里临时修改内容，并导入 / 导出 JSON；如果要永久保存到网站仓库，再把导出的内容同步到数据文件里。
+            所有栏目的内容都存放在 <code>assets/data/site-content.js</code> 数据文件里，修改后提交并推送到 GitHub，网站就会更新。
           </p>
         </div>
         <div class="stats">
           <div class="stat-card"><strong>5</strong><span>独立内容页</span></div>
           <div class="stat-card"><strong>ACM</strong><span>算法竞赛模板</span></div>
-          <div class="stat-card"><strong>JSON</strong><span>可导入导出</span></div>
+          <div class="stat-card"><strong>JSON</strong><span>结构化数据</span></div>
           <div class="stat-card"><strong>∞</strong><span>持续完善</span></div>
         </div>
       </div>
@@ -122,12 +120,6 @@
           <p>《心》《雪国》《白夜行》与历史剧、电影记录。</p>
           <a class="button primary" href="books-films.html">打开书影音页</a>
         </article>
-        <article class="hub-card editor-hub-card">
-          <div class="card-tag">Editor</div>
-          <h3>编辑端口</h3>
-          <p>在浏览器中修改栏目内容，支持保存到当前浏览器、导入 JSON 和导出 JSON。</p>
-          <a class="button ghost" href="editor.html">打开编辑端口</a>
-        </article>
       </div>
     </section>
 
@@ -166,7 +158,6 @@
         <div class="link-row">
           <a href="https://github.com/FailStateNormal" target="_blank" rel="noreferrer">GitHub</a>
           <a href="https://FailStateNormal.github.io" target="_blank" rel="noreferrer">Website</a>
-          <a href="editor.html">编辑端口</a>
         </div>
       </div>
     </section>

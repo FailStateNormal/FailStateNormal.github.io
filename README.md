@@ -1,8 +1,8 @@
 # 失败尽常态 / FailStateNormal
 
-这是 `失败尽常态` 的个人网站，适合部署到 GitHub Pages。
+这是 `失败尽常态` 的个人网站，部署在 GitHub Pages。
 
-网站地址建议为：
+网站地址：
 
 ```text
 https://FailStateNormal.github.io
@@ -23,109 +23,51 @@ music.html              音乐人记录
 history.html            历史人物札记
 physics.html            物理学家笔记
 books-films.html        书籍与影视记录
-editor.html             浏览器编辑端口
 assets/css/style.css    网站样式
 assets/js/script.js     通用交互效果
 assets/js/acm.js        ACM 模板页面交互
 assets/js/content-page.js  通用内容页渲染
-assets/js/editor.js     编辑端口交互
 assets/data/acm-data.js ACM 模板静态数据
 assets/data/site-content.js 音乐/历史/物理/书影音数据
 docs/                   原始资料与待办记录
+更新网站.bat            一键提交并推送到 GitHub
+维护说明.md             日常使用与维护指南
 README.md               仓库说明
 ```
 
-## 内容编辑端口
+## 怎么修改内容
 
-打开：
+所有栏目的文字都存放在数据文件里，改完提交并推送到 GitHub 即可生效：
 
-```text
-editor.html
+| 想改什么 | 改哪个文件 |
+| --- | --- |
+| 音乐 / 历史 / 物理 / 书影音 内容 | `assets/data/site-content.js` |
+| ACM 模板内容 | `assets/data/acm-data.js` |
+| 首页文字、栏目入口、联系方式 | `index.html` |
+| 颜色、字体、布局、动画 | `assets/css/style.css` |
+
+详细的日常操作步骤见 `维护说明.md`。
+
+## 怎么发布到网站
+
+改完文件后，**双击 `更新网站.bat`** 即可自动提交并推送。
+
+或者手动执行：
+
+```powershell
+git add -A
+git commit -m "说明你改了什么"
+git push origin main
 ```
 
-可以在浏览器里修改这些栏目：
+等 1~2 分钟，刷新 https://FailStateNormal.github.io 即可看到更新。
 
-- 音乐
-- 历史
-- 物理
-- 书影音
+## 部署设置（已完成，仅作记录）
 
-编辑器支持：
-
-- 修改栏目标题、眉标、简介
-- 新增 / 编辑 / 删除条目
-- 保存到当前浏览器 localStorage
-- 导入 JSON
-- 导出 JSON
-- 恢复默认内容
-
-注意：GitHub Pages 是静态网站，浏览器不能直接把内容写回仓库。所以：
-
-1. 在 `editor.html` 修改内容。
-2. 点击“导出到文本框”。
-3. 复制导出的 JSON。
-4. 把内容同步到 `assets/data/site-content.js`。
-5. 提交并推送到 GitHub。
-
-这样修改才会永久保存并对所有访问者生效。
-
-## 部署到 GitHub Pages
-
-1. 在 GitHub 创建仓库：
-
-```text
-FailStateNormal.github.io
-```
-
-2. 上传这些文件：
-
-```text
-index.html
-acm.html
-music.html
-history.html
-physics.html
-books-films.html
-editor.html
-assets/
-docs/
-README.md
-```
-
-3. 进入仓库：
-
-```text
-Settings → Pages
-```
-
-4. 设置：
+仓库 `Settings → Pages`：
 
 ```text
 Source: Deploy from a branch
 Branch: main
 Folder: /root
 ```
-
-5. 等待一会儿，访问：
-
-```text
-https://FailStateNormal.github.io
-```
-
-## 后续可以修改的地方
-
-- `index.html`：修改首页介绍、栏目入口、项目、联系方式
-- `acm.html`：修改 ACM 模板库页面结构
-- `assets/data/site-content.js`：修改音乐、历史、物理、书影音的默认内容
-- `assets/css/style.css`：修改颜色、布局、字体、动画
-- `assets/js/content-page.js`：修改普通内容页渲染逻辑
-- `assets/js/editor.js`：修改编辑端口逻辑
-- `docs/`：存放原始 TXT、待办记录和后续资料
-
-## 推荐下一步
-
-- 替换成真实项目链接
-- 添加头像或背景图
-- 给每个栏目继续补充长文、图片和链接
-- 如果需要真正在线写回 GitHub 仓库，可以后续接入 CMS 或 GitHub API
-- 绑定个人域名

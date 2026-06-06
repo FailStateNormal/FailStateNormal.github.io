@@ -4,7 +4,6 @@ const titleElement = document.querySelector('[data-content-title]');
 const introElement = document.querySelector('[data-content-intro]');
 const eyebrowElement = document.querySelector('[data-content-eyebrow]');
 const listElement = document.querySelector('[data-content-list]');
-const editorLink = document.querySelector('[data-editor-link]');
 
 function escapeHtml(value) {
   return String(value ?? '')
@@ -42,7 +41,6 @@ function renderContentPage() {
   if (titleElement) titleElement.textContent = pageData.title;
   if (introElement) introElement.textContent = pageData.intro;
   if (eyebrowElement) eyebrowElement.textContent = pageData.eyebrow || 'Archive';
-  if (editorLink) editorLink.href = `editor.html?page=${encodeURIComponent(pageKey)}`;
 
   if (Array.isArray(pageData.groups)) {
     listElement.innerHTML = pageData.groups.map((group) => `
