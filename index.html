@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="失败尽常态 / FailStateNormal 的个人网站，记录代码、兴趣与学习。" />
+  <title>失败尽常态 | FailStateNormal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="site-bg"></div>
+
+  <header class="header">
+    <a class="logo" href="#top" aria-label="回到首页">
+      <span class="logo-mark">FS</span>
+      <span>FailStateNormal</span>
+    </a>
+
+    <button class="nav-toggle" type="button" aria-label="打开导航" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="nav" aria-label="主导航">
+      <a href="#about">关于</a>
+      <a href="#projects">项目</a>
+      <a href="#interests">兴趣</a>
+      <a href="#notes">记录</a>
+      <a href="#contact">联系</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero section">
+      <div class="hero-content reveal">
+        <p class="eyebrow">Personal Website · Code · Interest · Notes</p>
+        <h1>失败尽常态</h1>
+        <p class="subtitle">FailStateNormal</p>
+        <p class="hero-text">
+          失败不是终点，而是常态。这里用来记录我的代码、学习、兴趣和一些正在慢慢成型的想法。
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="https://github.com/FailStateNormal" target="_blank" rel="noreferrer">访问 GitHub</a>
+          <a class="button ghost" href="#projects">查看项目</a>
+        </div>
+      </div>
+
+      <aside class="terminal-card reveal" aria-label="个人状态卡片">
+        <div class="terminal-top">
+          <span></span><span></span><span></span>
+        </div>
+        <pre><code>const profile = {
+  name: "失败尽常态",
+  handle: "FailStateNormal",
+  status: "learning",
+  motto: "Failure is the norm.",
+  github: "github.com/FailStateNormal"
+}</code></pre>
+      </aside>
+    </section>
+
+    <section id="about" class="section reveal">
+      <div class="section-heading">
+        <p class="eyebrow">About Me</p>
+        <h2>关于我</h2>
+      </div>
+      <div class="about-grid">
+        <div class="glass-card big-card">
+          <h3>你好，我是失败尽常态。</h3>
+          <p>
+            这是我的个人网站初版。它会随着我的学习、项目和兴趣一起成长。
+            我希望它不只是一个展示页，也能成为一个持续记录自己的地方。
+          </p>
+          <p>
+            现在这里可以先放一些基础信息，之后你可以继续补充：正在学习的技术、喜欢的领域、个人经历、作品展示等。
+          </p>
+        </div>
+        <div class="stats">
+          <div class="stat-card"><strong>01</strong><span>代码项目</span></div>
+          <div class="stat-card"><strong>02</strong><span>学习记录</span></div>
+          <div class="stat-card"><strong>03</strong><span>兴趣收藏</span></div>
+          <div class="stat-card"><strong>∞</strong><span>持续更新</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section reveal">
+      <div class="section-heading">
+        <p class="eyebrow">Projects</p>
+        <h2>个人代码 / 项目</h2>
+        <p>先放占位项目，之后可以替换成你的真实仓库。</p>
+      </div>
+      <div class="card-grid">
+        <article class="project-card">
+          <div class="card-tag">Web</div>
+          <h3>个人网站</h3>
+          <p>当前这个网站本身就是第一个项目，用来练习 HTML、CSS、JavaScript 和 GitHub Pages 部署。</p>
+          <a href="https://github.com/FailStateNormal/FailStateNormal.github.io" target="_blank" rel="noreferrer">查看仓库 →</a>
+        </article>
+        <article class="project-card">
+          <div class="card-tag">Code</div>
+          <h3>工具脚本合集</h3>
+          <p>可以放一些自己写的小工具、自动化脚本、学习代码或命令行项目。</p>
+          <a href="https://github.com/FailStateNormal" target="_blank" rel="noreferrer">前往 GitHub →</a>
+        </article>
+        <article class="project-card">
+          <div class="card-tag">Learning</div>
+          <h3>学习练习</h3>
+          <p>记录编程、算法、前端、后端或其它技术的学习过程。</p>
+          <a href="#notes">查看记录 →</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="interests" class="section reveal">
+      <div class="section-heading">
+        <p class="eyebrow">Interests</p>
+        <h2>兴趣空间</h2>
+      </div>
+      <div class="interest-list">
+        <div class="interest-item"><span>🎮</span><div><h3>游戏</h3><p>记录喜欢的游戏、通关体验、截图和想法。</p></div></div>
+        <div class="interest-item"><span>🎧</span><div><h3>音乐</h3><p>收藏喜欢的歌、歌单或某段时间循环播放的声音。</p></div></div>
+        <div class="interest-item"><span>📚</span><div><h3>阅读 / 影视</h3><p>放一些读书笔记、电影感想、番剧记录。</p></div></div>
+        <div class="interest-item"><span>🧪</span><div><h3>折腾</h3><p>各种有趣的小实验、小工具、小想法都可以放在这里。</p></div></div>
+      </div>
+    </section>
+
+    <section id="notes" class="section reveal">
+      <div class="section-heading">
+        <p class="eyebrow">Notes</p>
+        <h2>学习与记录</h2>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <time>现在</time>
+          <h3>搭建个人网站</h3>
+          <p>先完成一个能上线的版本，再慢慢增加内容和样式。</p>
+        </div>
+        <div class="timeline-item">
+          <time>下一步</time>
+          <h3>补充真实项目</h3>
+          <p>把 GitHub 上的仓库、项目截图、在线演示链接放进项目区。</p>
+        </div>
+        <div class="timeline-item">
+          <time>以后</time>
+          <h3>写博客 / 笔记</h3>
+          <p>可以加入 Markdown 博客、学习日志或技术文章。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact-section reveal">
+      <div class="glass-card contact-card">
+        <p class="eyebrow">Contact</p>
+        <h2>找到我</h2>
+        <p>目前先放 GitHub。之后你可以继续加邮箱、B站、知乎、博客、Steam 等链接。</p>
+        <div class="link-row">
+          <a href="https://github.com/FailStateNormal" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="https://FailStateNormal.github.io" target="_blank" rel="noreferrer">Website</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© <span id="year"></span> 失败尽常态 · Built with GitHub Pages</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
