@@ -4,60 +4,15 @@ const searchInput = document.querySelector('#template-search');
 const templateCount = document.querySelector('#template-count');
 const templateSource = document.querySelector('#template-source');
 
-const sourceFile = 'ACM竞赛模板汇总.txt';
-let parsedSections = [];
+let parsedSections = Array.isArray(window.ACM_TEMPLATES) ? window.ACM_TEMPLATES : [];
 
 function escapeHtml(value) {
-  return value
+  return String(value)
     .replaceAll('&', '&amp;')
     .replaceAll('<', '&lt;')
     .replaceAll('>', '&gt;')
     .replaceAll('"', '&quot;')
     .replaceAll("'", '&#039;');
-}
-
-function slugify(value, index) {
-  return `template-${index}-${value.replace(/[^\w一-龥]+/g, '-').replace(/^-|-$/g, '')}`;
-}
-
-function parseTemplates(rawText) {
-  const lines = rawText.replaceAll('\r\n', '\n').split('\n');
-  const sections = [];
-  let currentChapter = '说明';
-  let current = null;
-
-  lines.forEach((line) => {
-    const chapterMatch = line.match(/^第[一二三四五六七八九十]+章\s+(.+)$/);
-    const templateMatch = line.match(/^-{4,}\s*(.+?)\s*-{4,}$/);
-
-    if (chapterMatch) {
-      currentChapter = chapterMatch[0].trim();
-      current = null;
-      return;
-    }
-
-    if (templateMatch) {
-      current = {
-        chapter: currentChapter,
-        title: templateMatch[1].trim(),
-        code: [],
-      };
-      sections.push(current);
-      return;
-    }
-
-    if (current) {
-      current.code.push(line);
-    }
-  });
-
-  return sections
-    .map((section, index) => ({
-      ...section,
-      id: slugify(section.title, index + 1),
-      code: section.code.join('\n').trim(),
-    }))
-    .filter((section) => section.code.length > 0);
 }
 
 function groupByChapter(sections) {
@@ -126,25 +81,21 @@ async function copyTemplate(id) {
   }, 1200);
 }
 
-async function initTemplates() {
-  try {
-    const response = await fetch(encodeURI(sourceFile));
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-
-    const rawText = await response.text();
-    parsedSections = parseTemplates(rawText);
-    templateSource.textContent = `来源：${sourceFile}`;
-    applyFilter();
-  } catch (error) {
+function initTemplates() {
+  if (!parsedSections.length) {
     templateCount.textContent = '读取失败';
-    templateSource.textContent = '如果你是直接双击本地 HTML，浏览器可能会阻止读取 TXT；部署到 GitHub Pages 后会正常显示。';
+    templateSource.textContent = '静态模板数据没有加载，请确认 acm-data.js 已随页面一起上传。';
     templateList.innerHTML = `
       <div class="glass-card loading-card">
-        <h3>模板文本读取失败</h3>
-        <p>请确认 ${sourceFile} 和 acm.html 在同一目录，或通过本地服务器/GitHub Pages 打开。</p>
+        <h3>模板数据读取失败</h3>
+        <p>请确认 acm-data.js、acm.js 和 acm.html 在同一目录。</p>
       </div>
     `;
+    return;
   }
+
+  templateSource.textContent = '来源：ACM竞赛模板汇总.txt，已内置为静态数据';
+  applyFilter();
 }
 
 searchInput.addEventListener('input', applyFilter);
