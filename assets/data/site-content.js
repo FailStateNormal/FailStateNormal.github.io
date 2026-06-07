@@ -121,20 +121,15 @@ window.SITE_CONTENT = {
   }
 };
 
-window.getSiteContent = function getSiteContent() {
-  try {
-    const saved = localStorage.getItem(CONTENT_STORAGE_KEY);
-    return saved ? JSON.parse(saved) : window.SITE_CONTENT;
-  } catch (error) {
-    console.warn('无法读取本地编辑内容，使用默认内容。', error);
-    return window.SITE_CONTENT;
-  }
-};
-
-window.saveSiteContent = function saveSiteContent(content) {
-  localStorage.setItem(CONTENT_STORAGE_KEY, JSON.stringify(content));
-};
-
-window.resetSiteContent = function resetSiteContent() {
+// 内容直接来自本文件中的 SITE_CONTENT。
+// （旧版浏览器编辑器已移除，这里顺便清掉它可能残留在浏览器里的缓存，
+//  否则用过旧编辑器的人会一直看到过时内容。）
+try {
   localStorage.removeItem(CONTENT_STORAGE_KEY);
+} catch (error) {
+  /* localStorage 不可用时忽略即可 */
+}
+
+window.getSiteContent = function getSiteContent() {
+  return window.SITE_CONTENT;
 };

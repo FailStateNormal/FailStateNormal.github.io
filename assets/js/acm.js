@@ -70,8 +70,21 @@ async function copyTemplate(id) {
   const section = parsedSections.find((item) => item.id === id);
   if (!section) return;
 
-  await navigator.clipboard.writeText(section.code);
   const button = document.querySelector(`[data-copy="${id}"]`);
+
+  try {
+    await navigator.clipboard.writeText(section.code);
+  } catch (error) {
+    if (button) {
+      const oldText = button.textContent;
+      button.textContent = '复制失败';
+      setTimeout(() => {
+        button.textContent = oldText;
+      }, 1200);
+    }
+    return;
+  }
+
   if (!button) return;
 
   const oldText = button.textContent;
