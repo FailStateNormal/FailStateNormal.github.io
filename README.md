@@ -1,6 +1,6 @@
 # 失败尽常态 / FailStateNormal
 
-这是 `失败尽常态` 的个人网站，部署在 GitHub Pages。
+这里是 `失败尽常态` 的个人网站。
 
 网站地址：
 
@@ -30,44 +30,20 @@ assets/js/content-page.js  通用内容页渲染
 assets/data/acm-data.js ACM 模板静态数据
 assets/data/site-content.js 音乐/历史/物理/书影音数据
 docs/                   原始资料与待办记录
-更新网站.bat            一键提交并推送到 GitHub
-维护说明.md             日常使用与维护指南
-README.md               仓库说明
 ```
 
-## 怎么修改内容
-
-所有栏目的文字都存放在数据文件里，改完提交并推送到 GitHub 即可生效：
-
-| 想改什么 | 改哪个文件 |
-| --- | --- |
-| 音乐 / 历史 / 物理 / 书影音 内容 | `assets/data/site-content.js` |
-| ACM 模板内容 | `assets/data/acm-data.js` |
-| 首页文字、栏目入口、联系方式 | `index.html` |
-| 颜色、字体、布局、动画 | `assets/css/style.css` |
-
-详细的日常操作步骤见 `维护说明.md`。
-
-## 怎么发布到网站
-
-改完文件后，**双击 `更新网站.bat`** 即可自动提交并推送。
-
-或者手动执行：
-
-```powershell
-git add -A
-git commit -m "说明你改了什么"
-git push origin main
-```
-
-等 1~2 分钟，刷新 https://FailStateNormal.github.io 即可看到更新。
-
-## 部署设置（已完成，仅作记录）
-
-仓库 `Settings → Pages`：
+## 关于
 
 ```text
-Source: Deploy from a branch
-Branch: main
-Folder: /root
+    为什么要做呢，截止目前，只是玩儿玩儿，
+    再做点儿自己感兴趣和喜欢的
+```
+
+```cpp
+#include <iosstream>
+using namespace std;
+int main(){
+    cout<<"Hello world"<<endl;
+    cout<<"Hello GitHub";
+}
 ```
