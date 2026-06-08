@@ -28,19 +28,18 @@ assets/js/script.js     通用交互效果
 assets/js/acm.js        ACM 模板页面交互
 assets/js/content-page.js  通用内容页渲染
 assets/data/acm-data.js ACM 模板静态数据
-assets/data/site-content.js 音乐/历史/物理/书影音数据
-docs/                   原始资料与待办记录
+assets/data/site-content.js 音乐/历史/物理/书籍/影视
 ```
 
 ## 关于
 
 ```text
-    为什么要做呢，截止目前，只是玩儿玩儿，
-    再做点儿自己感兴趣和喜欢的
+为什么要做呢，截止目前，只是玩儿玩儿
+再做点儿自己感兴趣和喜欢的
 ```
 
 ```cpp
-#include <iosstream>
+#include <iostream>
 using namespace std;
 int main(){
     cout<<"Hello world"<<endl;
