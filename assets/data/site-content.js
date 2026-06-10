@@ -4,7 +4,7 @@ window.SITE_CONTENT = {
   music: {
     eyebrow: 'Musicians',
     title: '喜欢的音乐人',
-    intro: '按风格、代表作品和可继续补充的角度整理，后续可以加入专辑封面、歌词摘录、现场链接和个人听感排名。',
+    intro: '后续可能加入专辑封面、歌词摘录、现场链接和个人听感。',
     items: [
       {
         id: 'khalil-fong',
@@ -39,7 +39,7 @@ window.SITE_CONTENT = {
   history: {
     eyebrow: 'History Figures',
     title: '历史人物札记',
-    intro: '先搭一个“人物定位—关键词—可讨论问题”的框架，方便之后补充自己的判断。',
+    intro: '关于推崇的一些历史人物，象征着人性的光辉与强大',
     items: [
       {
         id: 'zhuge-liang',
