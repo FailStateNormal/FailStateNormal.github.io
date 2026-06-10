@@ -38,7 +38,7 @@ window.SITE_CONTENT = {
   },
   history: {
     eyebrow: 'History Figures',
-    title: '历史人物札记',
+    title: '历史人物',
     intro: '关于推崇的一些历史人物，象征着人性的光辉与强大',
     items: [
       {
@@ -66,7 +66,7 @@ window.SITE_CONTENT = {
   },
   physics: {
     eyebrow: 'Physics',
-    title: '伟大的物理学家',
+    title: '物理巨匠',
     intro: '以“主要贡献 + 评价角度”的方式记录，后面可以扩展成物理学史时间线。',
     items: [
       {
