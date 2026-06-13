@@ -33,6 +33,13 @@ window.SITE_CONTENT = {
         title: '丁世光',
         summary: '旋律审美细腻，作品常带有 R&B、Soul 与流行抒情气质，适合夜晚听，也适合写成私人歌单式札记。',
         bullets: ['风格：R&B、Soul Pop、Urban Ballad', '代表作：《Simon》《瘦子》《神探》', 'tags：旋律线、夜晚氛围、细腻情绪表达']
+      },
+      {
+        id: 'Stefanie Sun',
+        tag: 'pop,balledpop',
+        title: '孙燕姿',
+        summary:'旋律优美动人，音色完美温柔，作品既有极致简洁的钢琴编曲，也有高级复杂的弦乐等丰富的编曲。',
+        bullets: ['风格: pop、balled、rock、folk','代表作：《天黑黑》 《我不难过》 《我要的幸福》 《雨天》','tags:旋律优美、温柔动人']
       }
     ]
   },
@@ -46,7 +53,7 @@ window.SITE_CONTENT = {
         tag: '蜀汉 / 政治家',
         title: '诸葛亮',
         summary: '可以从政治家、军事组织者、制度建设者和理想主义者几个角度写。他的魅力不仅在谋略，也在于蜀汉弱势局面下的长期治理与北伐坚持。',
-        bullets: ['关键词：隆中对、治蜀、北伐、鞠躬尽瘁', 'tags：理想与现实、战略与国力、忠诚形象的形成', '争议：北伐是战略必要，还是资源压力下的高风险选择？']
+        bullets: ['关键词：隆中对、治蜀、北伐、鞠躬尽瘁', 'tags：理想与现实、战略与国力、忠诚', '争议：北伐是战略必要，还是资源压力下的高风险选择？']
       },
       {
         id: 'li-shimin',
@@ -67,7 +74,7 @@ window.SITE_CONTENT = {
   physics: {
     eyebrow: 'Physics',
     title: '物理巨匠',
-    intro: '以“主要贡献 + 评价角度”的方式记录，后面可以扩展成物理学史时间线。',
+    intro: '三大物理学家，为人类发展做出了无与伦比的贡献',
     items: [
       {
         id: 'newton',
@@ -95,7 +102,7 @@ window.SITE_CONTENT = {
   'books-films': {
     eyebrow: 'Books & Films',
     title: '书籍与影视记录',
-    intro: '先做成条目式简介：主题、气质和后续可补充方向都留出来。',
+    intro: '先做成条目式简介',
     groups: [
       {
         id: 'books',
