@@ -133,26 +133,32 @@ window.ACM_TEMPLATES = [
   },
   {
     "chapter": "第三章  搜索与图论",
-    "title": "3.6 强连通分量 (Tarjan SCC)",
-    "id": "template-23-3-6-强连通分量-Tarjan-SCC",
+    "title": "3.6 欧拉路径与欧拉回路",
+    "id": "template-49-3-6-欧拉路径与欧拉回路",
+    "code": "// 欧拉路径与欧拉回路 (AcWing 1184) — 输出一条欧拉回路\n// type=0 有向图: 每点入度=出度且连通; type=1 无向图: 每点度数为偶且连通\n#include <cstdio>\n#include <cstring>\n#include <iostream>\n#include <algorithm>\n\nusing namespace std;\n\nconst int N = 100010, M = 400010;\n\nint type;\nint n, m;\nint h[N], e[M], ne[M], idx;\nbool used[M];\nint ans[M], cnt;\nint din[N], dout[N];\n\nvoid add(int a, int b)\n{\n    e[idx] = b, ne[idx] = h[a], h[a] = idx ++ ;\n}\n\nvoid dfs(int u)\n{\n    for (int &i = h[u]; ~i;)\n    {\n        if (used[i])\n        {\n            i = ne[i];\n            continue;\n        }\n\n        used[i] = true;\n        if (type == 1) used[i ^ 1] = true;\n\n        int t;\n\n        if (type == 1)\n        {\n            t = i / 2 + 1;\n            if (i & 1) t = -t;\n        }\n        else t = i + 1;\n\n        int j = e[i];\n        i = ne[i];\n        dfs(j);\n\n        ans[ ++ cnt] = t;\n    }\n}\n\nint main()\n{\n    scanf(\"%d\", &type);\n    scanf(\"%d%d\", &n, &m);\n    memset(h, -1, sizeof h);\n\n    for (int i = 0; i < m; i ++ )\n    {\n        int a, b;\n        scanf(\"%d%d\", &a, &b);\n        add(a, b);\n        if (type == 1) add(b, a);\n        din[b] ++ , dout[a] ++ ;\n    }\n\n    if (type == 1)\n    {\n        for (int i = 1; i <= n; i ++ )\n            if (din[i] + dout[i] & 1)\n            {\n                puts(\"NO\");\n                return 0;\n            }\n    }\n    else\n    {\n        for (int i = 1; i <= n; i ++ )\n            if (din[i] != dout[i])\n            {\n                puts(\"NO\");\n                return 0;\n            }\n    }\n\n    for (int i = 1; i <= n; i ++ )\n        if (h[i] != -1)\n        {\n            dfs(i);\n            break;\n        }\n\n    if (cnt < m)\n    {\n        puts(\"NO\");\n        return 0;\n    }\n\n    puts(\"YES\");\n    for (int i = cnt; i; i -- ) printf(\"%d \", ans[i]);\n    puts(\"\");\n\n    return 0;\n}"
+  },
+  {
+    "chapter": "第三章  搜索与图论",
+    "title": "3.7 强连通分量 (Tarjan SCC)",
+    "id": "template-23-3-7-强连通分量-Tarjan-SCC",
     "code": "int dfn[N], low[N], id[N], stk[N], in_stk[N];\nint timer_cnt, top, scc_cnt;\nvoid tarjan(int u) {\n    dfn[u] = low[u] = ++timer_cnt;\n    stk[++top] = u; in_stk[u] = true;\n    for (int i = h[u]; ~i; i = ne[i]) {\n        int v = e[i];\n        if (!dfn[v]) { tarjan(v); low[u] = min(low[u], low[v]); }\n        else if (in_stk[v]) low[u] = min(low[u], dfn[v]);\n    }\n    if (dfn[u] == low[u]) {\n        scc_cnt++;\n        int v;\n        do { v = stk[top--]; in_stk[v] = false; id[v] = scc_cnt; } while (v != u);\n    }\n}"
   },
   {
     "chapter": "第三章  搜索与图论",
-    "title": "3.7 割点和桥 (Tarjan)",
-    "id": "template-24-3-7-割点和桥-Tarjan",
+    "title": "3.8 割点和桥 (Tarjan)",
+    "id": "template-24-3-8-割点和桥-Tarjan",
     "code": "int dfn[N], low[N], timer_cnt;\nbool cut[N]; // 割点标记\nvoid tarjan_cut(int u, int fa) {\n    dfn[u] = low[u] = ++timer_cnt;\n    int children = 0;\n    for (int i = h[u]; ~i; i = ne[i]) {\n        int v = e[i];\n        if (!dfn[v]) {\n            children++;\n            tarjan_cut(v, u);\n            low[u] = min(low[u], low[v]);\n            // 割点条件: 非根节点 low[v] >= dfn[u]，根节点 children >= 2\n            if (fa != -1 && low[v] >= dfn[u]) cut[u] = true;\n        } else if (v != fa) low[u] = min(low[u], dfn[v]);\n    }\n    if (fa == -1 && children >= 2) cut[u] = true;\n}\n// 桥: low[v] > dfn[u] 时边(u,v)是桥"
   },
   {
     "chapter": "第三章  搜索与图论",
-    "title": "3.8 网络流 (Dinic 最大流, O(V^2 * E))",
-    "id": "template-25-3-8-网络流-Dinic-最大流-O-V-2-E",
+    "title": "3.9 网络流 (Dinic 最大流, O(V^2 * E))",
+    "id": "template-25-3-9-网络流-Dinic-最大流-O-V-2-E",
     "code": "struct Edge { int to, cap, rev; };\nvector<Edge> graph[N];\nint level[N], iter[N];\n\nvoid add_edge(int from, int to, int cap) {\n    graph[from].push_back({to, cap, (int)graph[to].size()});\n    graph[to].push_back({from, 0, (int)graph[from].size()-1});\n}\nbool bfs(int s, int t, int n) {\n    fill(level, level+n, -1);\n    queue<int> q;\n    level[s] = 0; q.push(s);\n    while (!q.empty()) {\n        int v = q.front(); q.pop();\n        for (auto& e : graph[v])\n            if (e.cap > 0 && level[e.to] < 0) { level[e.to] = level[v]+1; q.push(e.to); }\n    }\n    return level[t] >= 0;\n}\nint dfs(int v, int t, int f) {\n    if (v == t) return f;\n    for (int& i = iter[v]; i < (int)graph[v].size(); i++) {\n        Edge& e = graph[v][i];\n        if (e.cap > 0 && level[v] < level[e.to]) {\n            int d = dfs(e.to, t, min(f, e.cap));\n            if (d > 0) { e.cap -= d; graph[e.to][e.rev].cap += d; return d; }\n        }\n    }\n    return 0;\n}\nint max_flow(int s, int t, int n) {\n    int flow = 0;\n    while (bfs(s, t, n)) {\n        fill(iter, iter+n, 0);\n        int d;\n        while ((d = dfs(s, t, INT_MAX)) > 0) flow += d;\n    }\n    return flow;\n}"
   },
   {
     "chapter": "第三章  搜索与图论",
-    "title": "3.9 最小费用最大流 (MCMF, SPFA版)",
-    "id": "template-26-3-9-最小费用最大流-MCMF-SPFA版",
+    "title": "3.10 最小费用最大流 (MCMF, SPFA版)",
+    "id": "template-26-3-10-最小费用最大流-MCMF-SPFA版",
     "code": "struct MEdge { int to, cap, cost, rev; };\nvector<MEdge> mg[N];\nint mdist[N], mpot[N]; bool minq[N];\n\nvoid add_medge(int u, int v, int cap, int cost) {\n    mg[u].push_back({v, cap, cost, (int)mg[v].size()});\n    mg[v].push_back({u, 0, -cost, (int)mg[u].size()-1});\n}\n// 返回 {最大流, 最小费用}\npair<int,int> mcmf(int s, int t, int n) {\n    int flow = 0, cost = 0;\n    while (true) {\n        fill(mdist, mdist+n, 0x3f3f3f3f);\n        mdist[s] = 0;\n        queue<int> q; q.push(s); minq[s] = true;\n        while (!q.empty()) {\n            int u = q.front(); q.pop(); minq[u] = false;\n            for (auto& e : mg[u])\n                if (e.cap > 0 && mdist[e.to] > mdist[u] + e.cost) {\n                    mdist[e.to] = mdist[u] + e.cost;\n                    if (!minq[e.to]) { q.push(e.to); minq[e.to] = true; }\n                }\n        }\n        if (mdist[t] == 0x3f3f3f3f) break;\n        // 沿最短路增广\n        int f = INT_MAX;\n        for (int v = t; v != s; ) {\n            // 这里需要记录路径，实际使用时建议用 prev 数组\n            break; // 简化版，完整实现见下方\n        }\n        // 完整实现：用 prev_v/prev_e 记录路径\n        flow += f; cost += f * mdist[t];\n    }\n    return {flow, cost};\n}\n// 注：完整实现建议使用 prev_v[v], prev_e[v] 记录前驱\n\n================================================================"
   },
   {
