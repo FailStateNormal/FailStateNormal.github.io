@@ -3,7 +3,7 @@ window.ACM_TEMPLATES = [
     "chapter": "第一章  基础算法",
     "title": "1.1 快速排序",
     "id": "template-1-1-1-快速排序",
-    "code": "void quick_sort(int q[], int l, int r) {\n    if (l >= r) return;\n    int i = l - 1, j = r + 1, x = q[l + r >> 1];\n    while (i < j) {\n        do i++;\n        while (q[i] < x);\n        do j--;\n        while (q[j] > x);\n        if (i < j) swap(q[i], q[j]);\n    }\n    quick_sort(q, l, j);\n    quick_sort(q, j + 1, r);\n}"
+    "code": "void quick_sort(int q[], int l, int r) {\n    if (l >= r) return;\n    int i = l - 1, j = r + 1, x = q[l + r >> 1];\n    while (i < j) {\n        do i++;     while (q[i] < x);\n        do j--;     while (q[j] > x);\n        if (i < j) swap(q[i], q[j]);\n    }\n    quick_sort(q, l, j);\n    quick_sort(q, j + 1, r);\n}"
   },
   {
     "chapter": "第一章  基础算法",
