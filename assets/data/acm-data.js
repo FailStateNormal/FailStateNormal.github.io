@@ -288,15 +288,15 @@ window.ACM_TEMPLATES = [
     "code": "mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());\nint randint(int l, int r) { return uniform_int_distribution<int>(l, r)(rng); }"
   },
   {
-    "chapter": "第七章  常用技巧和代码片段",
-    "title": "7.5 常见 DP 模型",
-    "id": "template-48-7-5-常见-DP-模型",
-    "code": "// LIS O(nlogn)\nint lis(int a[], int n) {\n    vector<int> d;\n    for (int i = 0; i < n; i++) {\n        auto it = lower_bound(d.begin(), d.end(), a[i]);\n        if (it == d.end()) d.push_back(a[i]);\n        else *it = a[i];\n    }\n    return d.size();\n}\n\n// 背包 (0/1)\nfor (int i = 1; i <= n; i++)\n    for (int j = V; j >= v[i]; j--)\n        dp[j] = max(dp[j], dp[j - v[i]] + w[i]);\n\n// 背包 (完全)\nfor (int i = 1; i <= n; i++)\n    for (int j = v[i]; j <= V; j++)\n        dp[j] = max(dp[j], dp[j - v[i]] + w[i]);\n\n// 区间 DP\nfor (int len = 2; len <= n; len++)\n    for (int i = 1; i + len - 1 <= n; i++) {\n        int j = i + len - 1;\n        for (int k = i; k < j; k++)\n            dp[i][j] = max(dp[i][j], dp[i][k] + dp[k+1][j] + cost(i, j, k));\n    }\n\n// 树形 DP (以1为根)\nvoid dfs(int u, int fa) {\n    dp[u] = ...; // 初始化\n    for (int i = h[u]; ~i; i = ne[i]) {\n        int v = e[i];\n        if (v == fa) continue;\n        dfs(v, u);\n        dp[u] = ...; // 利用 dp[v] 更新 dp[u]\n    }\n}\n\n================================================================\n附：各来源模板覆盖范围对比\n================================================================\n\nAcwing算法课模板 (01Acwing算法课模板.docx == 01算法课模板.docx，两文件完全相同):\n  覆盖: 基础算法、基础数据结构、图论(单源最短路/MST/二分图)、数论(全面)、博弈论\n  缺失: 网络流、计算几何、字符串高级(SA/AC自动机)、树链剖分、LCA\n\n郑老师资料 (00ACM ICPC培训资料（郑老师整理）.docx):\n  覆盖: C/C++语言基础(教程)、STL详细用法、Java大数类(BigInteger/BigDecimal)\n        线段树例题详解、树状数组、Kruskal、Floyd\n  特点: 偏教学向，适合初学参考\n  缺失: 大多数高级算法\n\n大林模板 (2005年，已过时):\n  算法覆盖广泛，但：\n  ① 代码风格完全过时 (#include<iostream.h>, qsort替代std::sort等)\n  ② 多处已知bug (SCC递归调用名错误、Miller-Rabin ret未初始化)\n  ③ 一般图匹配实现错误 (未处理奇圈，非Blossom算法)\n  ④ 大数封装无法在现代编译器编译\n  结论: 不建议直接使用任何代码，仅可参考算法思路\n\n本汇总文件不包含的高级内容 (需要时另查):\n  - 树链剖分 + LCA (模板较长，竞赛建议单独携带)\n  - 后缀自动机 SAM\n  - CDQ 分治\n  - 线段树合并/分裂 (可持久化)\n  - 虚树\n  - KD树\n\n================================================================"
+    "chapter": "第八章  动态规划",
+    "title": "8.1 常见 DP 模型",
+    "id": "template-48-8-1-常见-DP-模型",
+    "code": "// LIS O(nlogn)\nint lis(int a[], int n) {\n    vector<int> d;\n    for (int i = 0; i < n; i++) {\n        auto it = lower_bound(d.begin(), d.end(), a[i]);\n        if (it == d.end()) d.push_back(a[i]);\n        else *it = a[i];\n    }\n    return d.size();\n}\n\n// 背包 (0/1)\nfor (int i = 1; i <= n; i++)\n    for (int j = V; j >= v[i]; j--)\n        dp[j] = max(dp[j], dp[j - v[i]] + w[i]);\n\n// 背包 (完全)\nfor (int i = 1; i <= n; i++)\n    for (int j = v[i]; j <= V; j++)\n        dp[j] = max(dp[j], dp[j - v[i]] + w[i]);\n\n// 区间 DP\nfor (int len = 2; len <= n; len++)\n    for (int i = 1; i + len - 1 <= n; i++) {\n        int j = i + len - 1;\n        for (int k = i; k < j; k++)\n            dp[i][j] = max(dp[i][j], dp[i][k] + dp[k+1][j] + cost(i, j, k));\n    }\n\n// 树形 DP (以1为根)\nvoid dfs(int u, int fa) {\n    dp[u] = ...; // 初始化\n    for (int i = h[u]; ~i; i = ne[i]) {\n        int v = e[i];\n        if (v == fa) continue;\n        dfs(v, u);\n        dp[u] = ...; // 利用 dp[v] 更新 dp[u]\n    }\n}"
   },
   {
-    "chapter": "第八章  状态压缩DP",
-    "title": "8.1 蒙德里安的梦想 (状压DP)",
-    "id": "template-50-8-1-蒙德里安的梦想",
+    "chapter": "第八章  动态规划",
+    "title": "8.2 蒙德里安的梦想 (状压DP)",
+    "id": "template-50-8-2-蒙德里安的梦想",
     "code": `// 蒙德里安的梦想 (AcWing 291) — 1*2 骨牌铺满 n*m 棋盘的方案数
 // 按列 DP，f[i][j] 表示前 i-1 列已摆好、从第 i-1 列伸出到第 i 列的状态为 j 的方案数
 
@@ -406,9 +406,9 @@ int main()
 }`
   },
   {
-    "chapter": "第八章  状态压缩DP",
-    "title": "8.2 最短哈密顿路径",
-    "id": "template-51-8-2-最短哈密顿路径",
+    "chapter": "第八章  动态规划",
+    "title": "8.3 最短哈密顿路径 (状压DP)",
+    "id": "template-51-8-3-最短哈密顿路径",
     "code": `// 最短哈密顿路径 (AcWing 91) — 从 0 出发，经过每个点恰好一次，到达 n-1 的最短路径
 // f[i][state] 表示当前停在点 i、已访问点集为 state 时的最短距离
 #include <iostream>
@@ -465,5 +465,11 @@ int main() {
     return 0;
 
 }`
+  },
+  {
+    "chapter": "附录",
+    "title": "各来源模板覆盖范围对比",
+    "id": "template-52-附录-各来源模板覆盖范围对比",
+    "code": "附：各来源模板覆盖范围对比\n================================================================\n\nAcwing算法课模板 (01Acwing算法课模板.docx == 01算法课模板.docx，两文件完全相同):\n  覆盖: 基础算法、基础数据结构、图论(单源最短路/MST/二分图)、数论(全面)、博弈论\n  缺失: 网络流、计算几何、字符串高级(SA/AC自动机)、树链剖分、LCA\n\n郑老师资料 (00ACM ICPC培训资料（郑老师整理）.docx):\n  覆盖: C/C++语言基础(教程)、STL详细用法、Java大数类(BigInteger/BigDecimal)\n        线段树例题详解、树状数组、Kruskal、Floyd\n  特点: 偏教学向，适合初学参考\n  缺失: 大多数高级算法\n\n大林模板 (2005年，已过时):\n  算法覆盖广泛，但：\n  ① 代码风格完全过时 (#include<iostream.h>, qsort替代std::sort等)\n  ② 多处已知bug (SCC递归调用名错误、Miller-Rabin ret未初始化)\n  ③ 一般图匹配实现错误 (未处理奇圈，非Blossom算法)\n  ④ 大数封装无法在现代编译器编译\n  结论: 不建议直接使用任何代码，仅可参考算法思路\n\n本汇总文件不包含的高级内容 (需要时另查):\n  - 树链剖分 + LCA (模板较长，竞赛建议单独携带)\n  - 后缀自动机 SAM\n  - CDQ 分治\n  - 线段树合并/分裂 (可持久化)\n  - 虚树\n  - KD树"
   }
 ];
