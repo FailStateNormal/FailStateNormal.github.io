@@ -1,5 +1,11 @@
 window.ACM_TEMPLATES = [
   {
+    "chapter": "速查模板",
+    "title": "通用代码框架",
+    "id": "template-0-quickref-通用代码框架",
+    "code": "#include <bits/stdc++.h>\nusing namespace std;\n#define int long long\n#define endl '\\n'\n\nvoid solve() {\n}\n\nsigned main(){\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    solve();\n    return 0;\n}\n\n如有需要：\nusing PII=pair<int,int>;\n#define pb push_back\n#define all(x) (x).begin(),(x).end()"
+  },
+  {
     "chapter": "第一章  基础算法",
     "title": "1.1 快速排序",
     "id": "template-1-1-1-快速排序",
