@@ -4,7 +4,7 @@ window.SITE_CONTENT = {
   music: {
     eyebrow: 'Musicians',
     title: '喜欢的音乐人',
-    intro: '后续可能加入专辑封面、歌词摘录、现场链接和个人听感。',
+    intro: '常听的一些人，按名字摆在架子上。以后想到什么，就在旁边写两句听感。右下角的唱机里，装的就是他们的歌。',
     items: [
       {
         id: 'khalil-fong',
@@ -46,7 +46,7 @@ window.SITE_CONTENT = {
   history: {
     eyebrow: 'History Figures',
     title: '历史人物',
-    intro: '关于推崇的一些历史人物，象征着人性的光辉与强大',
+    intro: '几位放在心里很久的人。读他们，不是为了背年表，是想看看人在困局里，能把路走成什么样子。',
     items: [
       {
         id: 'zhuge-liang',
@@ -74,7 +74,7 @@ window.SITE_CONTENT = {
   physics: {
     eyebrow: 'Physics',
     title: '物理巨匠',
-    intro: '三大物理学家，为人类发展做出了无与伦比的贡献',
+    intro: '三位把星空写成方程的人。我们如今能看得更远，是因为借了他们的眼睛。',
     items: [
       {
         id: 'newton',
@@ -102,7 +102,7 @@ window.SITE_CONTENT = {
   'books-films': {
     eyebrow: 'Books & Films',
     title: '书籍与影视记录',
-    intro: '先做成条目式简介',
+    intro: '床头常翻的几本书、几部剧和电影。先记个条目，之后慢慢补上自己的注脚。',
     groups: [
       {
         id: 'books',
