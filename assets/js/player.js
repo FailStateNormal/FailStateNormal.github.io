@@ -30,9 +30,19 @@
     : Math.floor(Math.random() * TRACKS.length);
 
   const root = document.createElement('div');
-  root.className = 'music-player';
+  root.className = 'music-player collapsed';
   root.innerHTML = `
-    <button class="mp-disc" type="button" aria-label="展开或收起播放器" title="深夜歌单"></button>
+    <div class="mp-panel">
+      <div class="mp-list" role="listbox" aria-label="歌单">
+        ${TRACKS.map((track, i) => `
+          <button type="button" data-track="${i}">
+            <span class="mp-no">${String(i + 1).padStart(2, '0')}</span>
+            <span class="mp-song">${track.title}</span>
+          </button>
+        `).join('')}
+      </div>
+    </div>
+    <button class="mp-disc" type="button" aria-label="展开或收起播放器" aria-expanded="false" title="深夜歌单"></button>
     <div class="mp-body">
       <div class="mp-info">
         <div class="mp-title"></div>
@@ -51,6 +61,9 @@
         <button class="mp-next" type="button" aria-label="下一首">
           <svg viewBox="0 0 16 16"><path d="M11 2h2v12h-2zM3 2l7.5 6L3 14z"/></svg>
         </button>
+        <button class="mp-list-btn" type="button" aria-label="打开歌单" aria-expanded="false">
+          <svg viewBox="0 0 16 16"><path d="M2 3h12v1.6H2zM2 7.2h12v1.6H2zM2 11.4h7v1.6H2zM11.4 9.2h1.6v5h-1.6zM11.4 12.6l3.2 1v1.6l-3.2-1z"/></svg>
+        </button>
       </div>
     </div>
     <div class="mp-hint">点一下唱片，今晚的歌就开始了 ♪</div>
@@ -67,8 +80,15 @@
   const playBtn = root.querySelector('.mp-play');
   const icPlay = root.querySelector('.ic-play');
   const icPause = root.querySelector('.ic-pause');
+  const discBtn = root.querySelector('.mp-disc');
+  const listEl = root.querySelector('.mp-list');
+  const listBtn = root.querySelector('.mp-list-btn');
 
-  if (saved.collapsed) root.classList.add('collapsed');
+  /* 上次是伸开着离开的就保持伸开，默认收起成一张小唱片 */
+  if (saved.collapsed === false) {
+    root.classList.remove('collapsed');
+    discBtn.setAttribute('aria-expanded', 'true');
+  }
 
   function persist() {
     try {
@@ -89,6 +109,10 @@
       audio.currentTime = resumeTime;
     }
     titleEl.textContent = TRACKS[index].title;
+    barEl.style.width = '0%';
+    listEl.querySelectorAll('[data-track]').forEach((button) => {
+      button.classList.toggle('active', Number(button.dataset.track) === index);
+    });
     if (autoplay) play();
     persist();
   }
@@ -125,13 +149,34 @@
     document.addEventListener('pointerdown', start, { once: true });
   }
 
-  root.querySelector('.mp-disc').addEventListener('click', () => {
-    if (audio.paused) {
-      play();
-    } else {
-      root.classList.toggle('collapsed');
-    }
+  /* 唱片是开关：点一下横向伸长成播放条，再点缩回小圆。
+     被浏览器拦下的自动播放由下面的全局手势监听接管，这一下点击刚好触发它 */
+  discBtn.addEventListener('click', () => {
+    const collapsed = root.classList.toggle('collapsed');
+    discBtn.setAttribute('aria-expanded', String(!collapsed));
+    if (collapsed) closeList();
     persist();
+  });
+
+  /* 播放条上的歌单按钮：向上弹出歌单 */
+  function closeList() {
+    root.classList.remove('list-open');
+    listBtn.setAttribute('aria-expanded', 'false');
+  }
+
+  listBtn.addEventListener('click', () => {
+    const open = root.classList.toggle('list-open');
+    listBtn.setAttribute('aria-expanded', String(open));
+    if (open) {
+      const active = listEl.querySelector('.active');
+      if (active) active.scrollIntoView({ block: 'nearest' });
+    }
+  });
+
+  /* 歌单点选 */
+  listEl.addEventListener('click', (event) => {
+    const button = event.target.closest('[data-track]');
+    if (button) load(Number(button.dataset.track), { autoplay: true });
   });
 
   playBtn.addEventListener('click', () => (audio.paused ? play() : pause()));
