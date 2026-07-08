@@ -1,5 +1,8 @@
-/* 深夜歌单：悬浮小唱机 */
+/* 深夜歌单：悬浮小唱机。
+   局部换页时这个脚本不会重新执行，音频对象一直活着，歌不中断；
+   万一被重复注入，开头的守卫会直接退出。 */
 (function () {
+  if (document.querySelector('.music-player')) return;
   const TRACKS = [
     { file: '01-purple-rain.mp3', title: 'Purple Rain · Prince & The Revolution' },
     { file: '02-du-shang-c-lou.mp3', title: '独上C楼 · 黄宣 / 范晓萱' },
@@ -55,7 +58,7 @@
   document.body.appendChild(root);
 
   const audio = new Audio();
-  audio.preload = 'metadata';
+  audio.preload = 'auto';
   audio.volume = 0.65;
 
   const titleEl = root.querySelector('.mp-title');
@@ -137,9 +140,17 @@
 
   audio.addEventListener('ended', () => load(index + 1, { autoplay: true }));
 
+  /* 播放中每秒记一次进度：file:// 或直接刷新时整页重载，
+     续播位置最多只差一秒，几乎察觉不到回退 */
+  let lastPersist = 0;
   audio.addEventListener('timeupdate', () => {
     if (audio.duration) {
       barEl.style.width = `${(audio.currentTime / audio.duration) * 100}%`;
+    }
+    const now = Date.now();
+    if (!audio.paused && now - lastPersist > 1000) {
+      lastPersist = now;
+      persist();
     }
   });
 
@@ -150,10 +161,8 @@
     }
   });
 
-  setInterval(() => {
-    if (!audio.paused) persist();
-  }, 5000);
   window.addEventListener('beforeunload', persist);
+  window.addEventListener('pagehide', persist);
 
   load(index, { resumeTime: Number(saved.time) || 0 });
   play();
