@@ -112,17 +112,12 @@ window.FSN = window.FSN || {};
       if (images.length < 2) return;
 
       const interval = Number(host.dataset.slideInterval) || 5200;
-      // 每张卡片错开起点，避免整页同时翻页
       slideTimers.push(
-        setTimeout(() => {
-          slideTimers.push(
-            setInterval(() => {
-              images[current].classList.remove('on');
-              current = (current + 1) % images.length;
-              images[current].classList.add('on');
-            }, interval)
-          );
-        }, Math.random() * 2600)
+        setInterval(() => {
+          images[current].classList.remove('on');
+          current = (current + 1) % images.length;
+          images[current].classList.add('on');
+        }, interval)
       );
     });
   };
