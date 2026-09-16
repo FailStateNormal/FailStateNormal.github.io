@@ -187,6 +187,18 @@ window.ACM_TEMPLATES = [
   },
   {
     "chapter": "第四章  数学",
+    "title": "4.3.1 矩阵乘法 (2x2结构体版)",
+    "id": "template-29-4-3-1-矩阵乘法-2x2",
+    "code": "struct Matrix {\n    int a[2][2];\n};\n\nMatrix multi(Matrix A, Matrix B) {\n    Matrix C;\n    C.a[0][0] = (A.a[0][0]*B.a[0][0] + A.a[0][1]*B.a[1][0])%mod;\n    C.a[0][1] = (A.a[0][0]*B.a[0][1] + A.a[0][1]*B.a[1][1])%mod;\n    C.a[1][0] = (A.a[1][0]*B.a[0][0] + A.a[1][1]*B.a[1][0])%mod;\n    C.a[1][1] = (A.a[1][0]*B.a[0][1] + A.a[1][1]*B.a[1][1])%mod;\n    return C;\n}\n// 注：需配合快速幂使用，mod为模数"
+  },
+  {
+    "chapter": "第四章  数学",
+    "title": "4.3.2 分数结构体",
+    "id": "template-29-4-3-2-分数结构体",
+    "code": "struct Fraction {\n    int num,den;\n    Fraction(int a=0,int b=1):num(a),den(b) {\n        if (b<0) num=-a,den=-b;\n        reduce();\n    }\n    void reduce() {\n        int g=gcd(abs(num),den);\n        num/=g,den/=g;\n    }\n    Fraction operator +(const Fraction &f) const {\n        return Fraction(num*f.den+f.num*den,den*f.den);\n    }\n    Fraction operator -(const Fraction &f) const {\n        return Fraction(num*f.den-f.num*den,den*f.den);\n    }\n    bool operator <(const Fraction &f) const {\n        return num*f.den-f.num*den<0;\n    }\n};"
+  },
+  {
+    "chapter": "第四章  数学",
     "title": "4.4 扩展欧几里得 / 逆元",
     "id": "template-30-4-4-扩展欧几里得-逆元",
     "code": "long long exgcd(long long a, long long b, long long& x, long long& y) {\n    if (!b) {\n        x = 1;\n        y = 0;\n        return a;\n    }\n    long long d = exgcd(b, a % b, y, x);\n    y -= a / b * x;\n    return d;\n}\n// ax ≡ b (mod n) 的解：x0 = b/d * x0' % (n/d), 共d个解，间隔n/d\n// 模 p 逆元 (p 为质数): qpow(a, p-2, p)\n// 线性预处理逆元:\ninv[1] = 1;\nfor (int i = 2; i <= n; i++) inv[i] = (long long)(p - p / i) * inv[p % i] % p;"
@@ -259,9 +271,15 @@ window.ACM_TEMPLATES = [
   },
   {
     "chapter": "第六章  字符串高级算法",
-    "title": "6.1 AC自动机",
-    "id": "template-42-6-1-AC自动机",
+    "title": "6.1 AC自动机 (结构体版)",
+    "id": "template-42-6-1-AC自动机-结构体版",
     "code": "struct AhoCorasick {\n    int next[N][26], fail[N], cnt;\n    void init() {\n        cnt = 0;\n        memset(next[0], -1, sizeof next[0]);\n    }\n    void insert(const string& s) {\n        int cur = 0;\n        for (char c : s) {\n            int ch = c - 'a';\n            if (next[cur][ch] == -1) {\n                memset(next[++cnt], -1, sizeof next[cnt]);\n                next[cur][ch] = cnt;\n            }\n            cur = next[cur][ch];\n        }\n        // 标记终止节点\n    }\n    void build() {\n        queue<int> q;\n        fail[0] = 0;\n        for (int i = 0; i < 26; i++) {\n            if (next[0][i] == -1) next[0][i] = 0;\n            else {\n                fail[next[0][i]] = 0;\n                q.push(next[0][i]);\n            }\n        }\n        while (!q.empty()) {\n            int u = q.front();\n            q.pop();\n            for (int i = 0; i < 26; i++) {\n                if (next[u][i] == -1) next[u][i] = next[fail[u]][i];\n                else {\n                    fail[next[u][i]] = next[fail[u]][i];\n                    q.push(next[u][i]);\n                }\n            }\n        }\n    }\n    // query: 在文本串中遍历 AC 自动机，统计出现次数\n};"
+  },
+  {
+    "chapter": "第六章  字符串高级算法",
+    "title": "6.1.1 AC自动机 (完整实现，多组测试)",
+    "id": "template-42-6-1-1-AC自动机-完整实现",
+    "code": "#include <bits/stdc++.h>\nusing namespace std;\nconst int N=10010,M=1000010,S=55;\n\nint tr[N*S][26],ne[N*S];\nchar str[M];\nint q[N*S],cnt[N*S],idx;\n\nvoid insert() {\n    int p=0;\n    for(int i=0;str[i];i++) {\n       int t=str[i]-'a';\n        if(!tr[p][t]) {\n            tr[p][t]=++idx;\n        }\n        p=tr[p][t];\n    }\n    cnt[p]++;\n}\n\nvoid build() {\n    int hh=0,tt=-1;\n    int p=0;\n    for (int i=0;i<26;i++) {\n        if (tr[p][i]) q[++tt]=tr[p][i];\n    }\n    while(hh<=tt) {\n        int t=q[hh++];\n        for (int i=0;i<26;i++) {\n            int p=tr[t][i];\n            if (!p) {\n                tr[t][i]=tr[ne[t]][i];\n            }else {\n                ne[p]=tr[ne[t]][i];\n                q[++tt]=p;\n            }\n        }\n    }\n}\n\nvoid solve() {\n    int n;\n    cin >> n;\n    for (int i=1;i<=n;i++) {\n        cin>>str;\n        insert();\n    }\n    \n    build();\n    cin>>str;\n    \n    int res=0;\n    for (int i=0,j=0;str[i];i++) {\n        int t=str[i]-'a';\n        j=tr[j][t];\n        \n        int p=j;\n        while (p) {\n            res+=cnt[p];\n            cnt[p]=0;\n            p=ne[p];\n        }\n    }\n    cout<<res<<endl;\n}\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    int T;\n    cin >> T;\n    while (T--) {\n        memset(tr,0,sizeof(tr));\n        memset(ne,0,sizeof(ne));\n        memset(cnt,0,sizeof(cnt));\n        idx=0;\n\n        solve();\n    }\n}"
   },
   {
     "chapter": "第六章  字符串高级算法",
